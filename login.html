@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./boostrap/css/bootstrap.css">
+    <link rel="icon" href="./Images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="./jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="./login.css">
+    <title>Login Page</title>
+</head>
+<body>
+            <div class="modal-login">
+                    <div class="content-login">
+                            <div  class="sign sign-up">
+                                  <h1>Sign Up</h1>
+                                  <div class="input">
+                                    <input id="name" class="name" placeholder="Name" type="text" name="" id="">
+                                    <i class="fa-solid fa-user"></i>
+                                  </div>
+                                  <div class="input">
+                                    <input class="email" placeholder="Email" type ="email" name="" id="">
+                                    <i class="fa-solid fa-envelope"></i>
+                                  </div>
+                                  <div class="input">
+                                    <input id="pass"class="pass" placeholder="Password" type="password" name="" id="">
+                                    <i class="fa-solid fa-lock"></i>
+                                  </div>
+                                  <p>Lost password <a href="">Click here!</a></p>
+                            </div>
+                            <div class="sign sign-in">
+                                <h1>Sign In</h1>
+                                  <div class="input">
+                                    <input id="name-1" class="name" placeholder="Name" type="text" name="" id="">
+                                    <i class="fa-solid fa-user"></i>
+                                  </div>
+                                  <div class="input">
+                                    <input id="pass-1" class="pass" placeholder="Password" type ="password" name="" id="">
+                                    <i class="fa-solid fa-envelope"></i>
+                                  </div>
+                                  <button id ="btn-login" class="btn-login">Login</button>
+                            </div>
+                            <div class="buttons">
+                                 <button id="signup-btn" class="sign-up">Sign Up</button>
+                                 <button class ="sign-in">Sign In</button>
+                            </div>
+                    </div>
+            </div>
+    
+</body>
+<script> 
+  //login
+  const btn_signup = document.getElementById("signup-btn")
+  const btn_login = document.getElementById("btn-login")
+  let save_name 
+  let save_pass
+  function save_infor() {
+    const name = document.getElementById("name").value;
+    const pass = document.getElementById("pass").value
+         save_name = name
+           save_pass = pass
+      }
+      function Redirect() {
+        window.location="index.html";
+     }
+  function check_infor() {
+    const name1 = document.getElementById("name-1").value;
+    const pass1 = document.getElementById("pass-1").value
+    if(name1 == save_name && pass1 == save_pass) {
+       alert("Login successful!!!")
+       Redirect()
+    }
+    else {
+       alert("Password or name Eroll")
+    }
+  }
+  btn_login.addEventListener("click",check_infor)
+      btn_signup.addEventListener("click",save_infor)
+
+      $(document).ready(function() {
+        $(".buttons .sign-up").click(function() {
+             $(".content-login>.sign-up").hide()
+             alert("Sign Up Success")
+             $(".content-login>.sign-in").show()
+             $(".buttons").hide()
+          })
+        $(".buttons .sign-in").click(function() {
+             $(".content-login>.sign-up").hide()
+             $(".content-login>.sign-in").show()
+             $(".buttons").hide()
+        })
+      })
+</script>
+</html>
